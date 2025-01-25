@@ -7,7 +7,6 @@ import { Textarea } from "@/components/ui/textarea"
 import { Calendar } from "@/components/ui/calendar"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { format } from "date-fns"
-import deLocale from "date-fns/locale/de"
 import { CalendarIcon, Clock } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover"
@@ -50,7 +49,7 @@ export default function BookingPage() {
                       className={cn("w-full justify-start text-left font-normal", !date && "text-muted-foreground")}
                     >
                       <CalendarIcon className="mr-2 h-4 w-4" />
-                      {date ? format(date, "PPP", { locale: deLocale }) : "Datum wählen"}
+                      {date ? format(date, "PPP") : "Datum wählen"}
                     </Button>
                   </PopoverTrigger>
                   <PopoverContent className="w-auto p-0">
@@ -58,7 +57,6 @@ export default function BookingPage() {
                       mode="single"
                       selected={date}
                       onSelect={setDate}
-                      locale={deLocale}
                       disabled={(date) => date < new Date() || date < new Date("1900-01-01")}
                     />
                   </PopoverContent>
